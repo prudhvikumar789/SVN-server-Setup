@@ -1,0 +1,57 @@
+1    2  sudo apt-get update
+    3  apt-get update
+    4  apt-get install sudo -y
+    5  sudo apt-get install subversion apache2 libapache2-svn apache2-utils
+    6  sudo apt-get install subversion apache2 apache2-utils
+    7  sudo apt-get install libapache2-mod-svn
+    8  sudo mkdir -p /svn/repos/
+    9  sudo svnadmin create /svn/repos/myrepo
+   10  sudo chown -R www-data:www-data /svn/repos/myrepo
+   12  sudo vim /etc/apache2/sites-available/myrepo-svnrepo.conf
+   13  sudo a2ensite myrepo-svnrepo
+   14  service apache2 reload
+   15  service apache2 start
+   16  service apache2 reload
+   17  sudo htpasswd -cm /etc/svnpasswd admin
+   18  service apache2 restart
+   26  service apache2 status
+   29  service apache2 start
+   30  service apache2 status
+   34  service apache2 start
+   
+   
+   <Location /svn>
+DAV svn
+SVNParentPath /svn/repos/
+SVNListParentPath On
+AuthType Basic
+AuthName "Repositorio Subversion del proyecto"
+AuthUserFile /etc/svnpasswd
+Require valid-user
+</Location>
+
+
+
+
+   
+   35  ifconfig
+   88  cd svn/
+   89  ls
+   90  cd repos/
+   91  ls
+   92  cd myrepo/
+   93  ls
+   94  cd /etc/apache2/
+   95  ls
+   96  cat ports.conf 
+   97  service apache2 status
+   98  service apache2 start
+   99  service apache2 status
+  100  service apache2 stop
+  101  exit
+  102  cd /etc/apache2/
+  103  ls
+  104  service apache2 status
+  105  service apache2 start
+  106  service apache2 status
+  107  ifconfig
